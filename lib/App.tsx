@@ -1,5 +1,5 @@
 import {Component, ReactNode} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import BlinkText from './BlinkText';
 
 class App extends Component {
@@ -9,17 +9,25 @@ class App extends Component {
 
   render(): ReactNode {
     return (
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          backgroundColor: '#F352C0',
-          justifyContent: 'center',
-        }}>
-        <BlinkText title="click here" interval={100} />
+      <View style={styles.container}>
+        <Text style={styles.textBold}>Hello World</Text>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#F352C0',
+    justifyContent: 'center',
+  },
+  textBold: {
+    textAlign: 'center',
+    fontSize: 32,
+    fontWeight: 'bold',
+  },
+});
 
 export default App;
