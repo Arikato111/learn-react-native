@@ -1,6 +1,6 @@
 import {Component, ReactNode} from 'react';
 import {View, Text} from 'react-native';
-import Component1 from './Component1';
+import BlinkText from './BlinkText';
 
 class App extends Component {
   constructor(props: any) {
@@ -16,7 +16,7 @@ class App extends Component {
           backgroundColor: '#F352C0',
           justifyContent: 'center',
         }}>
-        <Component1 title='Helloworld' />
+        <BlinkText title="click here" interval={100} />
       </View>
     );
   }
