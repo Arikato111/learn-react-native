@@ -1,16 +1,27 @@
 import {Component, ReactNode} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import BlinkText from './BlinkText';
+import {View, Text, StyleSheet, TextInput} from 'react-native';
 
-class App extends Component {
+type state = {
+  inputText: string;
+};
+
+class App extends Component<{}, state> {
   constructor(props: any) {
     super(props);
+    this.state = {
+      inputText: '',
+    };
   }
 
   render(): ReactNode {
     return (
       <View style={styles.container}>
-        <Text style={styles.textBold}>Hello World</Text>
+        <Text>{this.state.inputText}</Text>
+        <TextInput
+          style={styles.inputText}
+          value={this.state.inputText}
+          onChangeText={(text) => this.setState({inputText: text})} 
+        />
       </View>
     );
   }
@@ -21,12 +32,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#F352C0',
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    alignItems: 'center',
   },
-  textBold: {
-    textAlign: 'center',
-    fontSize: 32,
-    fontWeight: 'bold',
+  inputText: {
+    minWidth: 100,
+    maxWidth: 300,
+    borderRadius: 6,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderStyle: 'solid',
   },
 });
 
