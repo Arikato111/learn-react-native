@@ -11,17 +11,20 @@ import {
 } from 'react-native';
 
 type state = {
-  inputText: string;
+  isClick: boolean;
 };
 
 class App extends Component<{}, state> {
   constructor(props: any) {
     super(props);
     this.state = {
-      inputText: '',
+      isClick: false,
     };
   }
 
+  onPressButton() {
+    this.setState({isClick: !this.state.isClick});
+  }
   clickMe() {
     Alert.alert('Thanks');
   }
@@ -36,11 +39,17 @@ class App extends Component<{}, state> {
           onPress={this.clickMe}
           underlayColor={'gray'}
           onLongPress={this.longClickMe}>
-          <Image
-            style={{width: 300, height: 100, resizeMode: 'center'}}
-            source={require('../images/pic.jpg')}
-          />
+          <View>
+            <Image
+              style={{width: 300, height: 100, resizeMode: 'center'}}
+              source={require('../images/pic.jpg')}
+            />
+          </View>
         </TouchableHighlight>
+        <Button
+          title={this.state.isClick ? 'Clicked' : 'Click'}
+          onPress={() => this.onPressButton()}
+        />
       </View>
     );
   }
