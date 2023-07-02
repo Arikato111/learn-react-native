@@ -24,9 +24,9 @@ class App extends Component<{}, state> {
 
   onPressButton = () => {
     this.setState(state => {
-      return {isClick: !state.isClick}
+      return {isClick: !state.isClick};
     });
-  }
+  };
   clickMe() {
     Alert.alert('Thanks');
   }
@@ -35,6 +35,9 @@ class App extends Component<{}, state> {
   }
 
   render(): ReactNode {
+    let img = this.state.isClick
+      ? require('../images/pic.jpg')
+      : require('../images/pic2.png');
     return (
       <View style={styles.container}>
         <TouchableHighlight
@@ -43,15 +46,12 @@ class App extends Component<{}, state> {
           onLongPress={this.longClickMe}>
           <View>
             <Image
-              style={{width: 300, height: 100, resizeMode: 'center'}}
-              source={require('../images/pic.jpg')}
+              style={{width: 300, height: 200, margin: 10, resizeMode: 'center', borderRadius: 10}}
+              source={img}
             />
           </View>
         </TouchableHighlight>
-        <Button
-          title={this.state.isClick ? 'Clicked' : 'Click'}
-          onPress={this.onPressButton}
-        />
+        <Button title={'switch'} onPress={this.onPressButton} />
       </View>
     );
   }
