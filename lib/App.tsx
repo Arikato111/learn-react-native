@@ -22,8 +22,10 @@ class App extends Component<{}, state> {
     };
   }
 
-  onPressButton() {
-    this.setState({isClick: !this.state.isClick});
+  onPressButton = () => {
+    this.setState(state => {
+      return {isClick: !state.isClick}
+    });
   }
   clickMe() {
     Alert.alert('Thanks');
@@ -48,7 +50,7 @@ class App extends Component<{}, state> {
         </TouchableHighlight>
         <Button
           title={this.state.isClick ? 'Clicked' : 'Click'}
-          onPress={() => this.onPressButton()}
+          onPress={this.onPressButton}
         />
       </View>
     );
